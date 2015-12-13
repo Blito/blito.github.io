@@ -69,13 +69,13 @@
 
 <p>SimEco is designed as a layered application. At the top, a UI made with Qt displays menus, handles user events and renders the underlying layer's output: the simulation itself. The second layer is the simulator's core, and is built as a statically linked library. It runs using a game-loop structure, with modules that gather user input (from the PSMove and keyboard) and feed a simulation pipeline. Some parts run in a parallel fashion, like the tracking algorithms for the PSMove and Qt's main thread; some others -like raycast algorithms- make heavy use of OpenMP's features, especially the fork-join pattern for spawning multiple threads.</p>
 
-<p>The core loop uses a raycast algorithm beginning from the tip of the transducer -across the virtual torso- to simulate the ultrasound wave front. The algorithm calculates echoes along the ray, and draws them accordingly, resembling an ultrasound image. This is all done in real time, as students use the PSMove to redirect the raycast and discover internal anatomic structures within the body.</p>
+<p>The core loop uses a raycast algorithm beginning from the tip of the transducer across the virtual torso to simulate the ultrasound wave front. The algorithm calculates echoes along the ray, and draws them accordingly, resembling an ultrasound image. This is all done in real time, as students use the PSMove to redirect the raycast and discover internal anatomic structures within the body.</p>
 
 <p>Simeco runs in Linux and Windows, and it is aimed to run smoothly on <em>cheap</em> computers (currently on i7-3610QM without dedicated GPU).</p>
 
 <p>I have been a part of the team since the project started, and the only member with previous C++ professional experience. As such, I have taken the personal goal to push everyone's knowledge, <em>especially</em> mine.</p>
 
-<p>Code isn't public, though some of the experiments I've been doing in the background are. Check them out <a href="http://github.com/Blito/VTK-QT">here</a> and <a href="http://github.com/Blito/VTK-SFML">here</a>!</p>
+<p>Code unfortunately isn't public, though some of the experiments I've been doing in the background are. Check them out <a href="http://github.com/Blito/VTK-QT">here</a> and <a href="http://github.com/Blito/VTK-SFML">here</a>!</p>
 
 <h5>
 <a id="screenshots" class="anchor" href="#screenshots" aria-hidden="true"><span class="octicon octicon-link"></span></a>Screenshots</h5>
@@ -96,7 +96,7 @@
 
 <p>The original idea was to learn modern OpenGL (ie. shading, lightning systems, etc), make a more robust build system, and integrate it with other libraries such as BulletPhysics and Assimp. After doing most of it (BulletPhysics still missing), I decided I would refactor the existing code to an Entity-Component-Systems architecture. So far, most of the work has been reading various implementations, although some tests indicate that it shouldn't be too hard to change what I have up to this point.</p>
 
-<p>The project has been a good place to learn lightning systems, which I implemented following the tutorials at <a href="learnopengl.com">learnopengl.com</a></p>
+<p>The project has been a good place to learn lightning systems, which I implemented following the tutorials at <a href="http://learnopengl.com">learnopengl.com</a></p>
 
 <h5>
 <a id="screenshots-1" class="anchor" href="#screenshots-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Screenshots</h5>
@@ -187,7 +187,7 @@
 
 <ul>
 <li>Fun (having a good time while doing it) comes first.</li>
-<li>It is fine to have a limited scope. This version of a 3d world may not be able to load every asset on Earth, or play sounds, or build on Linux, or render shadows, or have an AI engine, or... And it's ok.</li>
+<li>It is fine to have a limited scope. This version of a 3D world may not be able to load every asset on Earth, or play sounds, or build on Linux, or render shadows, or have an AI engine, or... And it's ok.</li>
 <li>I should pay more attention to the build process if I want someone to be able to use it.</li>
 <li>Read several ways of doing something before writing code, even if our first idea works.</li>
 </ul>
@@ -241,7 +241,7 @@
 
 <p>Our first impression was that the spanish wikia had been abandoned for years. A few months later I had applied for moderator, and after that for administrator (<a href="http://es.leagueoflegends.wikia.com/wiki/Usuario:Bleetoh">my profile</a>). For over a year, I spearheaded a collective effort towards building a new wiki for the game. By the end of it, visitors per week had risen from 7000 to more than 80000. My participation stopped for work-related reasons, but it was enough for a group of people to keep on editing on their own.</p>
 
-<p>During my stay, I implemented a few scripts in Python to update the <a href="http://leagueoflegends.wikia.com/wiki/Free_champion_rotation">Free Champion rotation</a> in a weekly basis. These scripts use the Riot REST API and the MediaWiki API to automatically update the required pages.</p>
+<p>During my stay, I implemented a few scripts in Python to update the <a href="http://leagueoflegends.wikia.com/wiki/Free_champion_rotation">Free Champion rotation</a> in a weekly basis. These scripts use the Riot REST API and the MediaWiki API to automatically update the required pages. I also designed and implemented the <a href="http://es.leagueoflegends.wikia.com/wiki/Template:Champion_info">champion banner UI</a> that would later be used in the English wiki!</p>
 
 <h3>
 <a id="scylla" class="anchor" href="#scylla" aria-hidden="true"><span class="octicon octicon-link"></span></a>Escape de Scylla</h3>
