@@ -1,122 +1,104 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-us">
   <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <meta charset="UTF-8">
+    <title>Blito&#39;s workshop by Blito</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
-
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <script type"text/javascript" src="https://assets.gfycat.com/gfycat.js"></script>
-
-    <title>Blito&#39;s workshop by Blito</title>
   </head>
-
   <body>
-    <header>
-      <div class="inner">
-        <h1>Blito&#39;s workshop</h1>
-        <h2></h2>
-        <a href="https://github.com/Blito" class="button"><small>Follow me on</small> GitHub</a>
-      </div>
-    </header>
+    <section class="page-header">
+      <h1 class="project-name">Blito&#39;s workshop</h1>
+      <h2 class="project-tagline"></h2>
+    </section>
 
-    <div id="content-wrapper">
-      <div class="inner clearfix">
-        <section id="main-content">
-          <h1>
-<a id="welcome" class="anchor" href="#welcome" aria-hidden="true"><span class="octicon octicon-link"></span></a>Welcome</h1>
+    <section class="main-content">
+      <h1>
+<a id="welcome" class="anchor" href="#welcome" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Welcome</h1>
 
-<p>My name is Pablo, but people call me Blito. I'm a 25-year-old Software Engineer, currently working as a C++ developer for a little bit more than 2 years, with experience in computer vision and high-performance code bases. </p>
+<p>My name is Pablo, though everyone calls me Blito. I'm a 26-year-old Software Engineer, currently working as a C++ developer for more than 3 years, with experience in computer vision and high-performance code bases. </p>
 
 <p>Playing videogames is something I've been enjoying for the last 20 years. It is something that shaped my personal life, my academic and professional career. </p>
 
 <p>This is a brief summary of some projects I have been working on, most of them on my free time.</p>
 
-<p>Game development is something I would like to focus on, professionally. So if you have an open position, feel free to contact me at pabloarubi at gmail.</p>
+<p>Game development and high-performance systems are areas where I want my professional career to go to. If you have an open position, feel free to contact me at pabloarubi at gmail.</p>
 
 <p></p>
 
 <h3>
-<a id="projects" class="anchor" href="#projects" aria-hidden="true"><span class="octicon octicon-link"></span></a>Projects</h3>
+<a id="projects" class="anchor" href="#projects" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Projects</h3>
 
 <ul>
-<li><a href="#simeco">SimEco</a></li>
-<li><a href="#recreito">Recreito</a></li>
-<li><a href="#ue4">Unreal Engine FPS Demo</a></li>
-<li><a href="#unity">Unity RTS Demo</a></li>
-<li><a href="#bulletdemo">Bullet Demo</a></li>
-<li><a href="#mutsu">I am Mutsu, please save me!</a></li>
-<li><a href="#wikia">League of Legends Wikia</a></li>
-<li><a href="#scylla">Escape de Scylla</a></li>
+<li>SimEco</li>
+<li>Recreito</li>
+<li>Unreal Engine FPS Demo</li>
+<li>Unity RTS Demo</li>
+<li>Bullet Demo</li>
+<li>I am Mutsu, please save me!</li>
+<li>League of Legends Wikia</li>
+<li>Escape de Scylla</li>
 </ul>
 
 <hr>
 
 <h2>
-<a id="simeco" class="anchor" href="#simeco" aria-hidden="true"><span class="octicon octicon-link"></span></a>SimEco</h2>
+<a id="simeco" class="anchor" href="#simeco" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>SimEco</h2>
 
 <p><em>My current job.</em></p>
 
 <p>SimEco is a learning platform for Ultrasound technicians. At its core is an Ultrasound Simulator, although some other layers live on top of that (like practice exercises).</p>
 
-<p>We create a 3D world with a human torso (using a CT scan's output as a source), and place a virtual transducer on top of it. The transducer is controlled by the student using a PSMove, simulating a real version of it.</p>
+<p>We create a 3D world with a human torso (using a CT scan's output as a source), and place a virtual transducer on top of it. The transducer is orientated by the student using a 3d-printed transducer with an AHRS chip on it (check out <a href="github.com/Blito/ahrs-motion-tracking">this repo</a> for a small example of it), simulating a real version of it. The positioning of the transducer is done using a home-made sensible skin wrapping a styrofoam cylinder that acts as a torso. The skin sends pressure info to an Arduino, which in turn sends the processed data to the computer via USB.</p>
 
-<p>SimEco is designed as a layered application. At the top, a UI made with Qt displays menus, handles user events and renders the underlying layer's output: the simulation itself. The second layer is the simulator's core, and is built as a statically linked library. It runs using a game-loop structure, with modules that gather user input (from the PSMove and keyboard) and feed a simulation pipeline. Some parts run in a parallel fashion, like the tracking algorithms for the PSMove and Qt's main thread; some others -like raycast algorithms- make heavy use of OpenMP's features, especially the fork-join pattern for spawning multiple threads.</p>
+<p>SimEco is designed as a layered application. At the top, a UI made with Qt5 displays menus, handles user events and renders the underlying layer's output: the simulation itself. The second layer is the simulator's core, and is built as a statically linked library. It runs using a game-loop structure, with modules that gather user input (from the AHRS chip, keyboard and the skin) and feed a simulation pipeline. Some parts run in a parallel fashion, like the tracking algorithms for the AHRS and Qt's main thread; some others -like raycast algorithms- make heavy use of OpenMP's features, especially the fork-join pattern for spawning multiple threads.</p>
 
-<p>The core loop uses a raycast algorithm beginning from the tip of the transducer across the virtual torso to simulate the ultrasound wave front. The algorithm calculates echoes along the ray, and draws them accordingly, resembling an ultrasound image. This is all done in real time, as students use the PSMove to redirect the raycast and discover internal anatomic structures within the body.</p>
+<p>The core loop uses a raycast algorithm beginning from the tip of the transducer -across the virtual torso- to simulate the ultrasound wave front. The algorithm calculates echoes along the ray, and draws them accordingly, resembling an ultrasound image. This is all done in real time, as students use the transducer to redirect the raycast and discover internal anatomic structures within the body.</p>
 
-<p>Simeco runs in Linux and Windows, and it is aimed to run smoothly on <em>cheap</em> computers (currently on i7-3610QM without dedicated GPU).</p>
+<p>Simeco runs in Linux and Windows, and it is aimed to run smoothly on <em>cheap</em> computers (currently at 40fps in a i7-3610QM without dedicated GPU).</p>
 
 <p>I have been a part of the team since the project started, and the only member with previous C++ professional experience. As such, I have taken the personal goal to push everyone's knowledge, <em>especially</em> mine.</p>
 
-<p>Code unfortunately isn't public, though some of the experiments I've been doing in the background are. Check them out <a href="http://github.com/Blito/VTK-QT">here</a> and <a href="http://github.com/Blito/VTK-SFML">here</a>!</p>
+<p>Code isn't public, though some of the experiments I've been doing in the background are. Check them out <a href="github.com/Blito/bullet3">here</a>, <a href="github.com/Blito/VTK-QT">here</a> and <a href="github.com/Blito/VTK-SFML">here</a>!</p>
 
 <h5>
-<a id="screenshots" class="anchor" href="#screenshots" aria-hidden="true"><span class="octicon octicon-link"></span></a>Screenshots</h5>
+<a id="screenshots" class="anchor" href="#screenshots" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Screenshots</h5>
 
 <h5>
-<a id="technologies-used" class="anchor" href="#technologies-used" aria-hidden="true"><span class="octicon octicon-link"></span></a>Technologies used</h5>
+<a id="technologies-used" class="anchor" href="#technologies-used" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Technologies used</h5>
 
-<p>C++11 (lambdas, threads, smart pointers, and other new features), <a href="www.vtk.org">VTK</a>, <a href="http://www.qt.io">Qt5</a>, <a href="http://www.openmp.org">OpenMP</a>, <a href="http://www.opencv.org">OpenCV</a>, <a href="http://glm.g-truc.net">glm</a>, <a href="http://github.com/thp/psmoveapi">psmoveapi</a>, <a href="http://github.com/google/googletest">Google Test</a>, <a href="http://www.cmake.org">CMake</a>, git.</p>
+<p>C++11 (lambdas, threads, smart pointers, and other new features), <a href="www.vtk.org">VTK</a>, <a href="www.qt.io">Qt5</a>, <a href="www.openmp.org">OpenMP</a>, <a href="ww.opencv.org">OpenCV</a>, <a href="glm.g-truc.net">glm</a>, <a href="github.com/thp/psmoveapi">psmoveapi</a>, <a href="github.com/google/googletest">Google Test</a>, <a href="www.cmake.org">CMake</a>, git.</p>
 
 <hr>
 
 <h2>
-<a id="recreito" class="anchor" href="#recreito" aria-hidden="true"><span class="octicon octicon-link"></span></a>Recreito</h2>
+<a id="recreito" class="anchor" href="#recreito" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Recreito</h2>
 
-<p>[2015 (<em>in progress</em>), <a href="http://github.com/Blito/Recreito">go to repo</a>]</p>
+<p>[2015, <a href="github.com/Blito/Recreito">go to repo</a>]</p>
 
 <p>Second attempt at doing a 3D world from scratch. This time using newly acquired knowledge and spending a little more time thinking before coding.</p>
 
 <p>The original idea was to learn modern OpenGL (ie. shading, lightning systems, etc), make a more robust build system, and integrate it with other libraries such as BulletPhysics and Assimp. After doing most of it (BulletPhysics still missing), I decided I would refactor the existing code to an Entity-Component-Systems architecture. So far, most of the work has been reading various implementations, although some tests indicate that it shouldn't be too hard to change what I have up to this point.</p>
 
-<p>The project has been a good place to learn lightning systems, which I implemented following the tutorials at <a href="http://learnopengl.com">learnopengl.com</a></p>
+<p>The project has been a good place to learn lightning systems, which I implemented following the tutorials at </p>
 
 <h5>
-<a id="screenshots-1" class="anchor" href="#screenshots-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Screenshots</h5>
-<div style="max-height:200px">
-  <div class="gfyitem" data-id="ComfortableHarshFinwhale" data-expand="true" data-autoplay="false" />
-</div>
-<div style="max-height:200px">
-  <div class="gfyitem" data-id="AdorableCommonArgentinehornedfrog" data-expand="true" data-autoplay="false" />
-</div>
-<h5>
-<a id="technologies-used-1" class="anchor" href="#technologies-used-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Technologies used</h5>
+<a id="screenshots-1" class="anchor" href="#screenshots-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Screenshots</h5>
 
-<p>C++11, OpenGL3+, <a href="http://www.libsdl.org">SDL2</a>, <a href="http://glm.g-truc.net">glm</a>, <a href="http://glew.sourceforge.net/">glew</a>, <a href="http://www.lonesock.net/soil.html">SOIL</a>, <a href="http://github.com/assimp/assimp">Assimp</a>, <a href="http://www.cmake.org">CMake</a>, git (using git submodules).</p>
+<h5>
+<a id="technologies-used-1" class="anchor" href="#technologies-used-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Technologies used</h5>
+
+<p>C++11, OpenGL3+, <a href="www.libsdl.org">SDL2</a>, <a href="glm.g-truc.net">glm</a>, <a href="glew.sourceforge.net/">glew</a>, <a href="www.lonesock.net/soil.html">SOIL</a>, <a href="github.com/assimp/assimp">Assimp</a>, <a href="www.cmake.org">CMake</a>, git (using git submodules).</p>
 
 <hr>
 
 <h2>
-<a id="ue4" class="anchor" href="#ue4" aria-hidden="true"><span class="octicon octicon-link"></span></a>Unreal Engine FPS Demo</h2>
+<a id="unreal-engine-fps-demo" class="anchor" href="#unreal-engine-fps-demo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Unreal Engine FPS Demo</h2>
 
-<p>[2014, <a href="http://github.com/Blito/glbpaintball">go to repo</a>]</p>
+<p>[2014, <a href="github.com/Blito/glbpaintball">go to repo</a>]</p>
 
 <p>Initially called Paintball FPS game, since bullets were balls affected by gravity. This project was developed as a tech demo for the company I worked at, Globant. It aimed at giving a small team of developers and artists the oportunity to get their hands on the Unreal Engine 4 (back when license was paid).</p>
 
@@ -133,21 +115,21 @@
 </ul>
 
 <h5>
-<a id="screenshots-2" class="anchor" href="#screenshots-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Screenshots</h5>
+<a id="screenshots-2" class="anchor" href="#screenshots-2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Screenshots</h5>
 
 <p><img src="images/paintball/ue4-ss03.jpg" alt="In Game Screenshot"></p>
 
 <h5>
-<a id="technoogies-used" class="anchor" href="#technoogies-used" aria-hidden="true"><span class="octicon octicon-link"></span></a>Technoogies used</h5>
+<a id="technoogies-used" class="anchor" href="#technoogies-used" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Technoogies used</h5>
 
-<p><a href="http://www.unrealengine.com">Unreal Engine 4</a> (C++ and blueprints), Visual Studio, git.</p>
+<p><a href="www.unrealengine.com">Unreal Engine 4</a> (C++ and blueprints), Visual Studio, git.</p>
 
 <hr>
 
 <h2>
-<a id="unity" class="anchor" href="#unity" aria-hidden="true"><span class="octicon octicon-link"></span></a>Unity RTS Demo</h2>
+<a id="unity-rts-demo" class="anchor" href="#unity-rts-demo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Unity RTS Demo</h2>
 
-<p>[2014, <a href="http://github.com/Blito/UnityRTS">go to repo</a>]</p>
+<p>[2014, <a href="github.com/Blito/UnityRTS">go to repo</a>]</p>
 
 <p>Small project to get my hands on Unity... again.</p>
 
@@ -162,24 +144,19 @@
 </ul>
 
 <h5>
-<a id="screenshots-3" class="anchor" href="#screenshots-3" aria-hidden="true"><span class="octicon octicon-link"></span></a>Screenshots</h5>
-<div style="max-height:200px">
-  <div class="gfyitem" data-id="RichAliveChevrotain" data-expand="true" data-autoplay="false" />
-</div>
-<div style="max-height:200px">
-  <div class="gfyitem" data-id="DentalAgileCaiman" data-expand="true" data-autoplay="false" />
-</div>
-<h5>
-<a id="technologies-used-2" class="anchor" href="#technologies-used-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Technologies used</h5>
+<a id="screenshots-3" class="anchor" href="#screenshots-3" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Screenshots</h5>
 
-<p><a href="http://www.unity3d.com">Unity</a></p>
+<h5>
+<a id="technologies-used-2" class="anchor" href="#technologies-used-2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Technologies used</h5>
+
+<p><a href="www.unity3d.com">Unity</a></p>
 
 <hr>
 
 <h2>
-<a id="bulletdemo" class="anchor" href="#bulletdemo" aria-hidden="true"><span class="octicon octicon-link"></span></a>BulletDemo</h2>
+<a id="bulletdemo" class="anchor" href="#bulletdemo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>BulletDemo</h2>
 
-<p>[2014, <a href="http://github.com/Blito/BulletDemo">go to repo</a>]</p>
+<p>[2014, <a href="github.com/Blito/BulletDemo">go to repo</a>]</p>
 
 <p>First attempt at doing a 3D world from scratch. </p>
 
@@ -187,7 +164,7 @@
 
 <ul>
 <li>Fun (having a good time while doing it) comes first.</li>
-<li>It is fine to have a limited scope. This version of a 3D world may not be able to load every asset on Earth, or play sounds, or build on Linux, or render shadows, or have an AI engine, or... And it's ok.</li>
+<li>It is fine to have a limited scope. This version of a 3d world may not be able to load every asset on Earth, or play sounds, or build on Linux, or render shadows, or have an AI engine, or... And it's ok.</li>
 <li>I should pay more attention to the build process if I want someone to be able to use it.</li>
 <li>Read several ways of doing something before writing code, even if our first idea works.</li>
 </ul>
@@ -195,71 +172,63 @@
 <p>The project loads up a 3D space with the user being close to a few boxes and a cloth hanging in the air. User can move, turn, strafe, jump and shoot smaller boxes when clicking. The demo uses soft-body physics for the cloth, and allows the user to interact with it with boxes.</p>
 
 <h5>
-<a id="screenshots-4" class="anchor" href="#screenshots-4" aria-hidden="true"><span class="octicon octicon-link"></span></a>Screenshots</h5>
-<div style="max-height:200px">
-  <div class="gfyitem" data-id="ZigzagImmediateKillerwhale" data-expand="true" data-autoplay="false" />
-</div>
-<div style="max-height:200px">
-  <div class="gfyitem" data-id="SoreSentimentalAfricanhornbill" data-expand="true" data-autoplay="false" />
-</div>
-<h5>
-<a id="technologies-used-3" class="anchor" href="#technologies-used-3" aria-hidden="true"><span class="octicon octicon-link"></span></a>Technologies used</h5>
+<a id="screenshots-4" class="anchor" href="#screenshots-4" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Screenshots</h5>
 
-<p>C++, <a href="http://www.bulletphysics.org">BulletPhysics</a>, OpenGL3, <a href="http://www.libsdl.org">SDL2</a>, Visual Studio 2010, git.</p>
+<h5>
+<a id="technologies-used-3" class="anchor" href="#technologies-used-3" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Technologies used</h5>
+
+<p>C++, <a href="www.bulletphysics.org">BulletPhysics</a>, OpenGL3, <a href="www.libsdl.org">SDL2</a>, Visual Studio 2010, git.</p>
 
 <hr>
 
 <h2>
-<a id="mutsu" class="anchor" href="#mutsu" aria-hidden="true"><span class="octicon octicon-link"></span></a>I am Mutsu, please save me!</h2>
+<a id="i-am-mutsu-please-save-me" class="anchor" href="#i-am-mutsu-please-save-me" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>I am Mutsu, please save me!</h2>
 
-<p>[<em>Global Game Jam 2014</em>, <a href="http://globalgamejam.org/2014/games/i-am-mutsu-please-save-me">GGJ site</a>, <a href="http://bitbucket.org/JojoBatista/i-am-mutsu-please-save-me">go to repo</a>]</p>
+<p>[<em>Global Game Jam 2014</em>, <a href="globalgamejam.org/2014/games/i-am-mutsu-please-save-me">GGJ site</a>, <a href="bitbucket.org/JojoBatista/i-am-mutsu-please-save-me">go to repo</a>]</p>
 
-<p>Game developed for the Global Game Jam 2014, my first experience in an event like that. We worked for 36 hours straight, with a team that I met on site for the first time. It was overall a great experience: game design, collaboration, and a lot of <a href="http://en.wikipedia.org/wiki/Mate_(beverage)">mate</a>!</p>
+<p>Game developed for the Global Game Jam 2014, my first experience in an event like that. We worked for 36 hours straight, with a team that I met on site for the first time. It was overall a great experience: game design, collaboration, and a lot of <a href="en.wikipedia.org/wiki/Mate_(beverage)">mate</a>!</p>
 
 <p>The game was a side-scrolling platformer. The main mechanic consisted of picking up RGB-colored gems, and being able to switch colors on/off. Platforms would be colored, and turning them on/off appropriately was part of the puzzle.</p>
 
 <h5>
-<a id="screenshots-5" class="anchor" href="#screenshots-5" aria-hidden="true"><span class="octicon octicon-link"></span></a>Screenshots</h5>
-<img src="images/mutsu/mutsu1.png" style="max-height:250px" />
-<img src="images/mutsu/mutsu2.jpg" style="max-height:250px" />
-<h5>
-<a id="technologies-used-4" class="anchor" href="#technologies-used-4" aria-hidden="true"><span class="octicon octicon-link"></span></a>Technologies used</h5>
+<a id="screenshots-5" class="anchor" href="#screenshots-5" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Screenshots</h5>
 
-<p><a href="http://www.unity3d.com">Unity</a></p>
+<h5>
+<a id="technologies-used-4" class="anchor" href="#technologies-used-4" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Technologies used</h5>
+
+<p><a href="www.unity3d.com">Unity</a></p>
 
 <hr>
 
 <h2>
-<a id="other-stuff" class="anchor" href="#other-stuff" aria-hidden="true"><span class="octicon octicon-link"></span></a>Other stuff</h2>
+<a id="other-stuff" class="anchor" href="#other-stuff" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Other stuff</h2>
 
 <h3>
-<a id="wikia" class="anchor" href="#wikia" aria-hidden="true"><span class="octicon octicon-link"></span></a>League of Legends Wikia</h3>
+<a id="league-of-legends-wikia" class="anchor" href="#league-of-legends-wikia" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>League of Legends Wikia</h3>
 
-<p>[2015, <a href="http://github.com/Blito/wikialol">go to repo</a>]</p>
+<p>[2015, <a href="github.com/Blito/wikialol">go to repo</a>]</p>
 
 <p>I have been playing League of Legends for the last 5 years. I first started playing in North America, and eventually moved to the Latin America South server. I realized the need for spanish resources for new players, so I decided to help -along with a friend- in the most popular League of Legends wikia.</p>
 
-<p>Our first impression was that the spanish wikia had been abandoned for years. A few months later I had applied for moderator, and after that for administrator (<a href="http://es.leagueoflegends.wikia.com/wiki/Usuario:Bleetoh">my profile</a>). For over a year, I spearheaded a collective effort towards building a new wiki for the game. By the end of it, visitors per week had risen from 7000 to more than 80000. My participation stopped for work-related reasons, but it was enough for a group of people to keep on editing on their own.</p>
+<p>Our first impression was that the spanish wikia had been abandoned for years. A few months later I had applied for moderator, and after that for administrator (<a href="es.leagueoflegends.wikia.com/wiki/Usuario:Bleetoh">my profile</a>). For over a year, I spearheaded a collective effort towards building a new wiki for the game. By the end of it, visitors per week had risen from 7000 to more than 80000. My participation stopped for work-related reasons, but it was enough for a group of people to keep on editing on their own.</p>
 
-<p>During my stay, I implemented a few scripts in Python to update the <a href="http://leagueoflegends.wikia.com/wiki/Free_champion_rotation">Free Champion rotation</a> in a weekly basis. These scripts use the Riot REST API and the MediaWiki API to automatically update the required pages. I also designed and implemented the <a href="http://es.leagueoflegends.wikia.com/wiki/Template:Champion_info">champion banner UI</a> that would later be used in the English wiki!</p>
+<p>During my stay, I implemented a few scripts in Python to update the <a href="leagueoflegends.wikia.com/wiki/Free_champion_rotation">Free Champion rotation</a> in a weekly basis. These scripts use the Riot REST API and the MediaWiki API to automatically update the required pages.</p>
 
 <h3>
-<a id="scylla" class="anchor" href="#scylla" aria-hidden="true"><span class="octicon octicon-link"></span></a>Escape de Scylla</h3>
+<a id="escape-de-scylla" class="anchor" href="#escape-de-scylla" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Escape de Scylla</h3>
 
 <p>Back in 2011 I participated in the <a href="http://wiideojuegos-upm.blogspot.com">Wiideojuegos 2011</a> contest, held by the Universidad Politécnica de Madrid, in Spain. We developed a game using Kinect -a novel device at the time- and got the first place award for Kinect category. The code eventually evolved into my thesis for becoming a Software Engineer: <em>Game development framework for Kinect-based games</em>.</p>
 
-<p>The game consisted in a spaceship scientist awakened by the call of an emergency alarm. The player, playing as the scientist, had to escape from Scylla (the spacecraft) while getting rid of small nanobots attaching to his body. We developed the game in C++ using <a href="http://www.openframeworks.cc">OpenFrameworks</a>, Boost (mainly for Boost.Thread), and <a href="http://www.memo.tv/ofxmsaphysics/">MSAPhysics</a> (a small particle engine). </p>
+<p>The game consisted in a spaceship scientist awakened by the call of an emergency alarm. The player, playing as the scientist, had to escape from Scylla (the spacecraft) while getting rid of small nanobots attaching to his body. We developed the game in C++ using <a href="www.openframeworks.cc">OpenFrameworks</a>, Boost (mainly for Boost.Thread), and <a href="www.memo.tv/ofxmsaphysics/">MSAPhysics</a> (a small particle engine). </p>
 
-<iframe style="display:block; margin: 15px auto;" width="560" height="315" src="https://www.youtube.com/embed/llM06oUeSYQ" frameborder="0" allowfullscreen></iframe>
-        </section>
+<p>You can see the trailer submitted for the contest <a href="www.youtube.com/watch?v=llM06oUeSYQ">here</a>.</p>
 
-        <aside id="sidebar">
+      <footer class="site-footer">
 
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
 
-          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
-        </aside>
-      </div>
-    </div>
+    </section>
 
   
   </body>
