@@ -2,7 +2,7 @@
 <html lang="en-us">
   <head>
     <meta charset="UTF-8">
-    <title>Blito&#39;s workshop by Blito</title>
+    <title>Blito&#39;s workshop</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
@@ -18,26 +18,30 @@
     </section>
 
     <section class="main-content">
-      <h1>
-<a id="welcome" class="anchor" href="#welcome" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Welcome</h1>
 
-<p>My name is Pablo, though everyone calls me Blito. I'm a Software Engineer currently building Cost & Usage Insights products at AWS.</p>
+<p><b>I'm Blito,</b></p>
+
+<p>I currently work as a <b>Software Engineer at AWS</b> building Cost & Usage Insights products.</p>
+
+<p>I am passionate about privacy, the free software movement, game development, high-performance systems and sustainability. I want my career to keep growing in this direction.</p>
   
-<p>I have been learning about and developing highly available distributed systems for about two years. The daily challenges I face involve dealing with data at a massive scale, in the order of terabytes a day, and building and maintaining algorithms that process that data within time and memory constraints. For this I use mostly scala, some Java, Apache Spark and a wide array of AWS products (SNS, SQS, Lambda, EMR, S3, DynamoDB, and more).</p>
+<p>For the past two years, I have been learning about and developing highly available distributed systems. The challenges I face involve dealing with data at a massive scale, in the order of terabytes a day. I design and maintain algorithms that process that data within time and memory constraints. For this I use mostly scala, some Java, Apache Spark and a wide array of AWS products (SNS, SQS, Lambda, EMR, S3, DynamoDB, and more).</p>
 
-<p>In my immediately previous life, I used to be a C++ developer. I worked for 3 years in high-performance code bases of very different nature. First, as a Platform Engineer for the PlayStation Network; then as a developer of a desktop Ultrasound Simulator (more on that below!)</p>
+<p>In my immediately previous life, I used to be a C++ developer. I worked for 3 years in high-performance code bases of very different nature. First, as a Platform Engineer for the PlayStation Network; then as a developer of a desktop Ultrasound Simulator. Big C++ codebases, multi-threaded desktop applications and volume rendering algorithms are things I've found to be very enjoyable.</p>
 
-<p>This is a brief summary of some projects I have worked on, most of them on my free time.</p>
+<h3>
+<a id="contact" class="anchor" href="#contact" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contact me</h3>
+    
 
-<p>I am passionate about things like privacy, the free software movement, game development, high-performance systems and sustainability. If you have an open position and you think I can be a multiplier, feel free to contact me at pabloarubi at gmail. </p>
-
-<p></p>
+<p>If you have an open position and you think I can be a multiplier, you can contact me at <b>pabloarubi at gmail</b>. </p>
 
 <h3>
 <a id="projects" class="anchor" href="#projects" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Projects</h3>
 
+<p>This is a brief summary of some projects I have worked on, most of them on my free time.</p>
+
 <ul>
-<li><a href="#simeco">SimEco</a></li>
+<li><a href="#simeco">SimEco - Ultrasound Simulator</a></li>
 <li><a href="#recreito">Recreito</a></li>
 <li><a href="#unreal-engine-fps-demo">Unreal Engine FPS Demo</a></li>
 <li><a href="#unity-rts-demo">Unity RTS Demo</a></li>
@@ -56,15 +60,15 @@
 
 <p>SimEco is a learning platform for Ultrasound technicians. At its core is an Ultrasound Simulator, although some other layers live on top of that (like practice exercises).</p>
 
-<p>We create a 3D world with a human torso (using a CT scan's output as a source), and place a virtual transducer on top of it. The transducer is orientated by the student using a 3d-printed transducer with an AHRS chip on it (check out <a href="github.com/Blito/ahrs-motion-tracking">this repo</a> for a small example of it), simulating a real version of it. The positioning of the transducer is done using a home-made sensible skin wrapping a styrofoam cylinder that acts as a torso. The skin sends pressure info to an Arduino, which in turn sends the processed data to the computer via USB.</p>
+<p>A 3D world is created with a human torso (using a CT scan's output as a source), with a virtual transducer placed on top of it. The transducer is orientated by the student using a 3d-printed probe with an AHRS chip on it (check out <a href="https://github.com/Blito/ahrs-motion-tracking">this repo</a> for a small example of it), simulating a real version of it. The positioning of the transducer is done using a home-made sensible skin wrapping a styrofoam cylinder that acts as a torso. The skin sends pressure info to an Arduino, which in turn sends the processed data to the computer via USB.</p>
 
 <p>SimEco is designed as a layered application. At the top, a UI made with Qt5 displays menus, handles user events and renders the underlying layer's output: the simulation itself. The second layer is the simulator's core, and is built as a statically linked library. It runs using a game-loop structure, with modules that gather user input (from the AHRS chip, keyboard and the skin) and feed a simulation pipeline. Some parts run in a parallel fashion, like the tracking algorithms for the AHRS and Qt's main thread; some others -like raycast algorithms- make heavy use of OpenMP's features, especially the fork-join pattern for spawning multiple threads.</p>
 
-<p>The core loop uses a raycast algorithm beginning from the tip of the transducer -across the virtual torso- to simulate the ultrasound wave front. The algorithm calculates echoes along the ray, and draws them accordingly, resembling an ultrasound image. This is all done in real time, as students use the transducer to redirect the raycast and discover internal anatomic structures within the body.</p>
+<p>The core loop uses a raycast algorithm beginning from the tip of the transducer -across the virtual torso- to simulate the ultrasound wave front. The algorithm calculates echoes along the ray and draws them accordingly, resembling an ultrasound image. This is all done in real time, as students use the transducer to redirect the raycast and discover internal anatomic structures within the body.</p>
 
 <p>Simeco runs in Linux and Windows, and it is aimed to run smoothly on <em>cheap</em> computers (currently at 40fps in a i7-3610QM without dedicated GPU).</p>
 
-<p>I have been a part of the team since the project started, and the only member with previous C++ professional experience. As such, I have taken the personal goal to push everyone's knowledge, <em>especially</em> mine.</p>
+<p>I was part of the team when the project started and for about two years. As the only member with previous C++ professional experience I had a great opportunity to push everyone's knowledge, <em>especially</em> mine.</p>
 
 <p>Code isn't public, though some of the experiments I've been doing in the background are. Check them out <a href="https://github.com/Blito/bullet3">here</a>, <a href="https://github.com/Blito/VTK-QT">here</a> and <a href="https://github.com/Blito/VTK-SFML">here</a>!</p>
 
@@ -89,14 +93,14 @@
 <h5>
 <a id="technologies-used" class="anchor" href="#technologies-used" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Technologies used</h5>
 
-<p>C++11 (lambdas, threads, smart pointers, and other new features), <a href="www.vtk.org">VTK</a>, <a href="www.qt.io">Qt5</a>, <a href="www.openmp.org">OpenMP</a>, <a href="ww.opencv.org">OpenCV</a>, <a href="glm.g-truc.net">glm</a>, <a href="github.com/thp/psmoveapi">psmoveapi</a>, <a href="github.com/google/googletest">Google Test</a>, <a href="www.cmake.org">CMake</a>, git.</p>
+<p>C++11 (lambdas, threads, smart pointers, and other new features), <a href="https://www.vtk.org">VTK</a>, <a href="https://www.qt.io">Qt5</a>, <a href="https://www.openmp.org">OpenMP</a>, <a href="https://www.opencv.org">OpenCV</a>, <a href="https://glm.g-truc.net">glm</a>, <a href="https://github.com/thp/psmoveapi">psmoveapi</a>, <a href="https://github.com/google/googletest">Google Test</a>, <a href="https://www.cmake.org">CMake</a>, git.</p>
 
 <hr>
 
 <h2>
 <a id="recreito" class="anchor" href="#recreito" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Recreito</h2>
 
-<p>[2015, <a href="github.com/Blito/Recreito">go to repo</a>]</p>
+<p>[2015, <a href="https://github.com/Blito/Recreito">go to repo</a>]</p>
 
 <p>Second attempt at doing a 3D world from scratch. This time using newly acquired knowledge and spending a little more time thinking before coding.</p>
 
@@ -115,14 +119,14 @@
 <h5>
 <a id="technologies-used-1" class="anchor" href="#technologies-used-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Technologies used</h5>
 
-<p>C++11, OpenGL3+, <a href="www.libsdl.org">SDL2</a>, <a href="glm.g-truc.net">glm</a>, <a href="glew.sourceforge.net/">glew</a>, <a href="www.lonesock.net/soil.html">SOIL</a>, <a href="github.com/assimp/assimp">Assimp</a>, <a href="www.cmake.org">CMake</a>, git (using git submodules).</p>
+<p>C++11, OpenGL3+, <a href="https://www.libsdl.org">SDL2</a>, <a href="https://glm.g-truc.net">glm</a>, <a href="https://glew.sourceforge.net/">glew</a>, <a href="https://www.lonesock.net/soil.html">SOIL</a>, <a href="https://github.com/assimp/assimp">Assimp</a>, <a href="https://www.cmake.org">CMake</a>, git (using git submodules).</p>
 
 <hr>
 
 <h2>
 <a id="unreal-engine-fps-demo" class="anchor" href="#unreal-engine-fps-demo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Unreal Engine FPS Demo</h2>
 
-<p>[2014, <a href="github.com/Blito/glbpaintball">go to repo</a>]</p>
+<p>[2014, <a href="https://github.com/Blito/glbpaintball">go to repo</a>]</p>
 
 <p>Initially called Paintball FPS game, since bullets were balls affected by gravity. This project was developed as a tech demo for the company I worked at, Globant. It aimed at giving a small team of developers and artists the oportunity to get their hands on the Unreal Engine 4 (back when license was paid).</p>
 
@@ -146,14 +150,14 @@
 <h5>
 <a id="technoogies-used" class="anchor" href="#technoogies-used" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Technoogies used</h5>
 
-<p><a href="www.unrealengine.com">Unreal Engine 4</a> (C++ and blueprints), Visual Studio, git.</p>
+<p><a href="https://www.unrealengine.com">Unreal Engine 4</a> (C++ and blueprints), Visual Studio, git.</p>
 
 <hr>
 
 <h2>
 <a id="unity-rts-demo" class="anchor" href="#unity-rts-demo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Unity RTS Demo</h2>
 
-<p>[2014, <a href="github.com/Blito/UnityRTS">go to repo</a>]</p>
+<p>[2014, <a href="https://github.com/Blito/UnityRTS">go to repo</a>]</p>
 
 <p>Small project to get my hands on Unity... again.</p>
 
@@ -178,14 +182,14 @@
 <h5>
 <a id="technologies-used-2" class="anchor" href="#technologies-used-2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Technologies used</h5>
 
-<p><a href="www.unity3d.com">Unity</a></p>
+<p><a href="https://www.unity3d.com">Unity</a></p>
 
 <hr>
 
 <h2>
 <a id="bulletdemo" class="anchor" href="#bulletdemo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>BulletDemo</h2>
 
-<p>[2014, <a href="github.com/Blito/BulletDemo">go to repo</a>]</p>
+<p>[2014, <a href="https://github.com/Blito/BulletDemo">go to repo</a>]</p>
 
 <p>First attempt at doing a 3D world from scratch. </p>
 
@@ -211,16 +215,16 @@
 <h5>
 <a id="technologies-used-3" class="anchor" href="#technologies-used-3" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Technologies used</h5>
 
-<p>C++, <a href="www.bulletphysics.org">BulletPhysics</a>, OpenGL3, <a href="www.libsdl.org">SDL2</a>, Visual Studio 2010, git.</p>
+<p>C++, <a href="https://www.bulletphysics.org">BulletPhysics</a>, OpenGL3, <a href="https://www.libsdl.org">SDL2</a>, Visual Studio 2010, git.</p>
 
 <hr>
 
 <h2>
 <a id="i-am-mutsu-please-save-me" class="anchor" href="#i-am-mutsu-please-save-me" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>I am Mutsu, please save me!</h2>
 
-<p>[<em>Global Game Jam 2014</em>, <a href="globalgamejam.org/2014/games/i-am-mutsu-please-save-me">GGJ site</a>, <a href="bitbucket.org/JojoBatista/i-am-mutsu-please-save-me">go to repo</a>]</p>
+<p>[<em>Global Game Jam 2014</em>, <a href="https://globalgamejam.org/2014/games/i-am-mutsu-please-save-me">GGJ site</a>, <a href="https://bitbucket.org/JojoBatista/i-am-mutsu-please-save-me">go to repo</a>]</p>
 
-<p>Game developed for the Global Game Jam 2014, my first experience in an event like that. We worked for 36 hours straight, with a team that I met on site for the first time. It was overall a great experience: game design, collaboration, and a lot of <a href="en.wikipedia.org/wiki/Mate_(beverage)">mate</a>!</p>
+<p>Game developed for the Global Game Jam 2014, my first experience in an event like that. We worked for 36 hours straight, with a team that I met on site for the first time. It was overall a great experience: game design, collaboration, and a lot of <a href="https://en.wikipedia.org/wiki/Mate_(beverage)">mate</a>!</p>
 
 <p>The game was a side-scrolling platformer. The main mechanic consisted of picking up RGB-colored gems, and being able to switch colors on/off. Platforms would be colored, and turning them on/off appropriately was part of the puzzle.</p>
 
@@ -231,7 +235,7 @@
 <h5>
 <a id="technologies-used-4" class="anchor" href="#technologies-used-4" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Technologies used</h5>
 
-<p><a href="www.unity3d.com">Unity</a></p>
+<p><a href="https://www.unity3d.com">Unity</a></p>
 
 <hr>
 
@@ -241,20 +245,20 @@
 <h3>
 <a id="league-of-legends-wikia" class="anchor" href="#league-of-legends-wikia" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>League of Legends Wikia</h3>
 
-<p>[2015, <a href="github.com/Blito/wikialol">go to repo</a>]</p>
+<p>[2015, <a href="https://github.com/Blito/wikialol">go to repo</a>]</p>
 
 <p>I have been playing League of Legends for the last 5 years. I first started playing in North America, and eventually moved to the Latin America South server. I realized the need for spanish resources for new players, so I decided to help -along with a friend- in the most popular League of Legends wikia.</p>
 
-<p>Our first impression was that the spanish wikia had been abandoned for years. A few months later I had applied for moderator, and after that for administrator (<a href="es.leagueoflegends.wikia.com/wiki/Usuario:Bleetoh">my profile</a>). For over a year, I spearheaded a collective effort towards building a new wiki for the game. By the end of it, visitors per week had risen from 7000 to more than 80000. My participation stopped for work-related reasons, but it was enough for a group of people to keep on editing on their own.</p>
+<p>Our first impression was that the spanish wikia had been abandoned for years. A few months later I had applied for moderator, and after that for administrator (<a href="https://es.leagueoflegends.wikia.com/wiki/Usuario:Bleetoh">my profile</a>). For over a year, I spearheaded a collective effort towards building a new wiki for the game. By the end of it, visitors per week had risen from 7000 to more than 80000. My participation stopped for work-related reasons, but it was enough for a group of people to keep on editing on their own.</p>
 
-<p>During my stay, I implemented a few scripts in Python to update the <a href="leagueoflegends.wikia.com/wiki/Free_champion_rotation">Free Champion rotation</a> in a weekly basis. These scripts use the Riot REST API and the MediaWiki API to automatically update the required pages.</p>
+<p>During my stay, I implemented a few scripts in Python to update the <a href="https://leagueoflegends.wikia.com/wiki/Free_champion_rotation">Free Champion rotation</a> in a weekly basis. These scripts use the Riot REST API and the MediaWiki API to automatically update the required pages.</p>
 
 <h3>
 <a id="escape-de-scylla" class="anchor" href="#escape-de-scylla" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Escape de Scylla</h3>
 
 <p>Back in 2011 I participated in the <a href="http://wiideojuegos-upm.blogspot.com">Wiideojuegos 2011</a> contest, held by the Universidad Politécnica de Madrid, in Spain. We developed a game using Kinect -a novel device at the time- and got the first place award for Kinect category. The code eventually evolved into my thesis for becoming a Software Engineer: <em>Game development framework for Kinect-based games</em>.</p>
 
-<p>The game consisted in a spaceship scientist awakened by the call of an emergency alarm. The player, playing as the scientist, had to escape from Scylla (the spacecraft) while getting rid of small nanobots attaching to his body. We developed the game in C++ using <a href="www.openframeworks.cc">OpenFrameworks</a>, Boost (mainly for Boost.Thread), and <a href="www.memo.tv/ofxmsaphysics/">MSAPhysics</a> (a small particle engine). </p>
+<p>The game consisted in a spaceship scientist awakened by the call of an emergency alarm. The player, playing as the scientist, had to escape from Scylla (the spacecraft) while getting rid of small nanobots attaching to his body. We developed the game in C++ using <a href="https://www.openframeworks.cc">OpenFrameworks</a>, Boost (mainly for Boost.Thread), and <a href="https://www.memo.tv/ofxmsaphysics/">MSAPhysics</a> (a small particle engine). </p>
 
 <p><iframe style="display:block; margin: 15px auto;" width="560" height="315" src="https://www.youtube.com/embed/llM06oUeSYQ" frameborder="0" allowfullscreen></iframe></p>
 
